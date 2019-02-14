@@ -12,8 +12,8 @@ exports.register = (req, res) => {
     // if (req.body.request == "register") {
         // Create a Account
         const account = new Account({
-            privateKey: "asd",
-            address: "dsa",
+            privateKey: "23788046678sdbnjp7t172gh8",
+            address: "0x68x8zgxzz7x23z88xhdffhujacgh",
             balance: 200,
         });
         // Save Account in the database
@@ -22,8 +22,9 @@ exports.register = (req, res) => {
             var responseObj = 
                 { 
                 "responseTo" : "register",
-                "privateKey" : "18748719749xaxggs7t171df2",
-                "address" : "0x68x8zgxzz7x98z09xhdfqadcaffc",
+                "privateKey" : "23788046678sdbnjp7t172gh8",
+                "address" : "0x68x8zgxzz7x23z88xhdffhujacgh",
+                "uuid" : account.id,
                 "balance" : 200
                 }
 
@@ -151,6 +152,12 @@ exports.restoreWallet = (req, res) => {
 exports.sendCoin = (req, res) => {
 
     //Validate Request
+    if(!req.body.privateKey) {
+        return res.status(400).send({
+            message: "Private Key can not be empty"
+        });
+    }
+
     if(!req.body.fromAddress || !req.body.toAddress) {
         return res.status(400).send({
             message: "From Address and To Address can not be empty"
@@ -178,7 +185,11 @@ exports.sendCoin = (req, res) => {
                 message: "Account not found with address " + req.body.fromAddress
             });
         }
-
+        if(account.privateKey != req.body.privateKey) {
+            return res.status(404).send({
+                message: "Account Private key is not the same as From Address"
+            });
+        }
             totalFromBalance = parseFloat(account.balance) - parseFloat(req.body.amount);
 
             //Validate balance available

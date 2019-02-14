@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('#registerButton').click(function() {
 
 		    
-		$.post( "http://localhost:3000/account", { request: "register"}, function(data) {
+		$.post( "http://localhost:3000/account", function(data) {
    			$('.loginRegister').hide();
    			$('.account').show();
 
