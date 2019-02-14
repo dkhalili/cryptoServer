@@ -41,6 +41,7 @@ app.get('/', function(req, res) {
 
 
 require('./app/routes/account.routes.js')(app);
+require('./app/routes/log.routes.js')(app);
 
 // listen for requests
 app.listen(4040, () => {

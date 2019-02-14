@@ -1,0 +1,71 @@
+	// Create a new Account
+	POST "justwilks.com:4040/account"
+		
+		Response
+			    { 
+			    "responseTo" : "register",
+			    "privateKey" : "",
+			    "address" : "",
+			    "uuid" :  ::,
+			    "balance" : ""
+			    }
+
+
+
+    // Get Balance of Account by address
+    GET "justwilks.com:4040/account/getBalance"
+    	
+    	Request (In Params)
+				address = ""
+
+		Response
+                {
+                "responseTo" : "getBalance",
+                "balance" : "",
+                "uuid" : "",
+                "address" : ""
+                }
+
+
+
+
+    // Restore Account by key
+    GET "justwilks.com:4040/account/restoreAccount"
+
+    	Request (In Params)
+    			privateKey = ""
+
+		Response
+                {
+                "responseTo" : "restoreWallet",
+                "balance" : "",
+                "uuid" : "",
+                "address" : "",
+                "privateKey" : ""
+                }
+
+
+    // Send Coin from one address to another
+    PUT "justwilks.com:4040/account"
+
+    	Request (In Body)
+    			{
+    			privateKey = "",
+    			fromAddress = "",
+    			toAddress = "",
+    			amount = ""
+    			}
+
+		Response
+                {
+	            responseTo : "sendCoin",
+	            fromAddress : "",
+	            toAddress : "",
+	            toBalance : "",
+	            fromBalance : ""
+                }
+
+
+
+
+

@@ -1,4 +1,5 @@
 const Account = require('../models/account.model.js');
+const Log = require('../models/log.model.js');
 
 // Create and Save a new User
 exports.register = (req, res) => {
@@ -307,8 +308,18 @@ exports.sendCoin = (req, res) => {
 
 
 
-
-
+    const log = new Log({
+        fromAddress: req.body.fromAddress,
+        toAddress: req.body.toAddress,
+        amount: req.body.amount,
+    });
+    // Save Log in the database
+    log.save()
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while creating the Log."
+        });
+    });
 
 
 

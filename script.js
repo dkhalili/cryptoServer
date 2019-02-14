@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('#registerButton').click(function() {
 
 		    
-		$.post( "http://localhost:3000/account", function(data) {
+		$.post( "/account", function(data) {
    			$('.loginRegister').hide();
    			$('.account').show();
 
@@ -24,12 +24,13 @@ $(document).ready(function() {
 		var key = $('#keyInput').val();
 
 		if(!key) {
-			console.log("error")
+			console.log("error");
 		}
 		else {
 
 		    
-		$.get( "http://localhost:3000/account/restoreWallet", {privateKey: key }, function(data) {
+		$.get( "/account/restoreWallet", {privateKey: key }, function(data) {
+
    			$('.loginRegister').hide();
    			$('.account').show();
 
@@ -45,16 +46,21 @@ $(document).ready(function() {
 
 
 
+
+
+
+
 	$('#sendCoin').click(function() {
 
                 $.ajax({
-                    url: 'http://localhost:3000/account',
+                    url: '/account',
                     type: 'PUT',
                     data: {
                         request: "sendCoin", 
                         fromAddress: $('#address').text(), 
                         toAddress: $('#addressInput').val(), 
-                        amount : $('#amountInput').val() 
+                        amount : $('#amountInput').val(),
+                        privateKey: $('#privateKey').text()
                     },
                     success: function (response) {
                     	console.log(response.fromBalance);
@@ -72,10 +78,43 @@ $(document).ready(function() {
                     	
                     	$('#sendNotification').text(response.responseJSON.message)
                     }
-                })
+                });
 
 
 	});
+
+
+
+
+
+  $('#viewCoinsSent').click( function() {
+    
+    $('#logsList').empty();
+    
+    $.get( "/account/logs/fromAccount/" + $('#address').text(), function(data) {
+        for (var x = 0; x < data.length; x++) {
+          $('#logsList').append("<p>" + data[x].amount+" coins sent to address: " + data[x].toAddress + " </p>")
+        }
+    } );
+
+  });
+
+
+
+  $('#viewCoinsReceived').click( function() {
+
+    $('#logsList').empty();
+
+    $.get( "/account/logs/toAccount/" + $('#address').text(), function(data) {
+        for (var x = 0; x < data.length; x++) {
+          $('#logsList').append("<p>" + data[x].amount+" coins received from address: " + data[x].fromAddress + " </p>")
+        }
+    } );
+
+
+  });
+
+
 
 
 });
