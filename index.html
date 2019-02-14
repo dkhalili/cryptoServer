@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='style.css' />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+  </head>
+  <body>
+  	
+
+  	<div class="loginRegister">
+	    <button id="loginButton">Login</button>
+
+	    <button id="registerButton">Register</button>
+
+
+
+		<p>Private Key: <input type="text" id="keyInput"></p>
+
+  	</div>
+
+
+  	<div class="account">
+	    <h1>Address: </h1><h1 id="address"></h1>
+	    <br>
+	    <h1>Private Key </h1><h1 id="privateKey"></h1>
+	    <br>
+		<h1>Balance: </h1><h1 id="balance"></h1>
+
+<br>
+<br>
+	  	<div class="sendCoins">
+	  		<h1>Send Coins</h1>
+			<p>To Address: <input type="text" id="addressInput"></p>
+			<p>Amount: <input type="number" min=0 id="amountInput"></p><br>
+			<button id="sendCoin">Send</button>
+
+			<p id="sendNotification"></p>
+  		</div>
+
+  	</div>
+
+
+  </body>
+</html>
