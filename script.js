@@ -93,7 +93,7 @@ $(document).ready(function() {
     
     $.get( "/account/logs/fromAccount/" + $('#address').text(), function(data) {
         for (var x = 0; x < data.length; x++) {
-          $('#logsList').append("<p>" + data[x].amount+" coins sent to address: " + data[x].toAddress + " </p>")
+          $('#logsList').append("<p>" + data[x].amount+" coins sent to address: " + data[x].toAddress + " at " + Date(data[x].updatedAt) + " </p>")
         }
     } );
 
@@ -107,12 +107,13 @@ $(document).ready(function() {
 
     $.get( "/account/logs/toAccount/" + $('#address').text(), function(data) {
         for (var x = 0; x < data.length; x++) {
-          $('#logsList').append("<p>" + data[x].amount+" coins received from address: " + data[x].fromAddress + " </p>")
+          $('#logsList').append("<p>" + data[x].amount+" coins received from address: " + data[x].fromAddress + " at "+ Date(data[x].updatedAt) + "</p>")
         }
     } );
 
 
   });
+
 
 
 
