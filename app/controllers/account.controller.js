@@ -22,8 +22,8 @@ exports.register = (req, res) => {
             var responseObj = 
                 { 
                 "responseTo" : "register",
-                "privateKey" : "asd",
-                "address" : "dsa",
+                "privateKey" : "18748719749xaxggs7t171df2",
+                "address" : "0x68x8zgxzz7x98z09xhdfqadcaffc",
                 "balance" : 200
                 }
 
