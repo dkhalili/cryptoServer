@@ -36,7 +36,7 @@ $(document).ready(function() {
 
      			$('#address').text(data.address)
      			$('#privateKey').text(key)
-     			$('#balance').text(data.balance).append( "<img src='/coin.png' id='coinImg'>");
+     			$('#balance').text(data.balance).append( "<img src='./Coin.png' id='coinImg'>");
 
   		} ).fail(function(error) {
         $('#loginNotification').text(error.statusText);
