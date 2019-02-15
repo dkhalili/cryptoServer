@@ -23,21 +23,24 @@ $(document).ready(function() {
 
 		var key = $('#keyInput').val();
 
-		if(!key) {
-			console.log("error");
+		if(key == '') {
+      $('#loginNotification').text("Private Key Required");
 		}
 		else {
 
 		    
-		$.get( "/account/restoreWallet", {privateKey: key }, function(data) {
+  		$.get( "/account/restoreWallet", {privateKey: key }, function(data, error, something) {
+          
+     			$('.loginRegister').hide();
+     			$('.account').show();
 
-   			$('.loginRegister').hide();
-   			$('.account').show();
+     			$('#address').text(data.address)
+     			$('#privateKey').text(key)
+     			$('#balance').text(data.balance).append( "<img src='/coin.png' id='coinImg'>");
 
-   			$('#address').text(data.address)
-   			$('#privateKey').text(key)
-   			$('#balance').text(data.balance)
-		} );
+  		} ).fail(function(error) {
+        $('#loginNotification').text(error.statusText);
+      });
 
 
 		}
@@ -93,7 +96,7 @@ $(document).ready(function() {
     
     $.get( "/account/logs/fromAccount/" + $('#address').text(), function(data) {
         for (var x = 0; x < data.length; x++) {
-          $('#logsList').append("<p>" + data[x].amount+" coins sent to address: " + data[x].toAddress + " at " + Date(data[x].updatedAt) + " </p>")
+          $('#logsList').append("<p>" + data[x].amount+" coins sent to address: " + data[x].toAddress + " at " + new Date(data[x].updatedAt) + " </p>")
         }
     } );
 
@@ -107,7 +110,7 @@ $(document).ready(function() {
 
     $.get( "/account/logs/toAccount/" + $('#address').text(), function(data) {
         for (var x = 0; x < data.length; x++) {
-          $('#logsList').append("<p>" + data[x].amount+" coins received from address: " + data[x].fromAddress + " at "+ Date(data[x].updatedAt) + "</p>")
+          $('#logsList').append("<p>" + data[x].amount+" coins received from address: " + data[x].fromAddress + " at "+ new Date(data[x].updatedAt) + "</p>")
         }
     } );
 

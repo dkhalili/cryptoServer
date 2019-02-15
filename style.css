@@ -9,21 +9,38 @@
 }
 
 #loginButton {
-    margin-top: 40px;
     width: 100px;
     height: 25px;
 }
 
 #registerButton {
-    margin-top: 40px;
+    margin-top: 50px;
     width: 100px;
     height: 25px;
 }
 
+.loginRegister h4{
+    margin-top: 40px;
 
+}
+.loginRegister input{
+    width: 165px;
 
+}
+
+#loginNotification {
+	color: red;
+}
 
 .account {
 	text-align: center;
 	display: none;
+}
+#coinImg {
+	height: 25px;
+	padding-left: 5px;
+}
+
+#sendNotification {
+	color: blue;
 }
