@@ -6,7 +6,7 @@
 			    "responseTo" : "register",
 			    "privateKey" : "",
 			    "address" : "",
-			    "uuid" :  ::,
+			    "_id" :  ::,
 			    "balance" : ""
 			    }
 
@@ -22,7 +22,7 @@
                 {
                 "responseTo" : "getBalance",
                 "balance" : "",
-                "uuid" : "",
+                "_id" : "",
                 "address" : ""
                 }
 
@@ -39,7 +39,7 @@
                 {
                 "responseTo" : "restoreWallet",
                 "balance" : "",
-                "uuid" : "",
+                "_id" : "",
                 "address" : "",
                 "privateKey" : ""
                 }

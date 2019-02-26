@@ -13,8 +13,8 @@ exports.register = (req, res) => {
     // if (req.body.request == "register") {
         // Create a Account
         const account = new Account({
-            privateKey: "23788046678sdbnjp7t172gh8",
-            address: "0x68x8zgxzz7x23z88xhdffhujacgh",
+            privateKey: "18748719749xaxggs7t171df2",
+            address: "0x68x8zgxzz7x98z09xhdfqadcaffc",
             balance: 200,
         });
         // Save Account in the database
@@ -23,8 +23,8 @@ exports.register = (req, res) => {
             var responseObj = 
                 { 
                 "responseTo" : "register",
-                "privateKey" : "23788046678sdbnjp7t172gh8",
-                "address" : "0x68x8zgxzz7x23z88xhdffhujacgh",
+                "privateKey" : "18748719749xaxggs7t171df2",
+                "address" : "0x68x8zgxzz7x98z09xhdfqadcaffc",
                 "uuid" : account.id,
                 "balance" : 200
                 }
